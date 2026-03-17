@@ -14,7 +14,7 @@ public class RecordingTest {
     {
         try (Playwright playwright = Playwright.create()) {
           Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
-            .setHeadless(false));
+            .setHeadless(true));
           BrowserContext context = browser.newContext(
             new Browser.NewContextOptions()
             .setRecordVideoDir(Paths.get("videos/"))
@@ -90,6 +90,7 @@ public class RecordingTest {
           page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Continue")).click();
           assertThat(page.getByText("Order Subtotal $").nth(1)).isVisible();
           assertThat(page.locator(".bned-order-summary-container.bned-step-summary-inner-container > .bned-order-summary-order-totals > .subtotals > div:nth-child(2)")).isVisible();
+          page.waitForTimeout(3000);
           assertThat(page.getByText("Tax $").nth(1)).isVisible();
           assertThat(page.getByText("Total $185.20 185.2 $").nth(1)).isVisible();
           assertThat(page.locator("div:nth-child(4) > .bned-order-summary-entries-wp > .bned-order-summary-entry > .bned-order-summary-entry-details-wp > .bned-name-qty-wp > .bned-order-summary-entry-name")).isVisible();
