@@ -1,3 +1,6 @@
+![SE333_CI](https://github.com/JosephSAlemu/A5-Part2/actions/workflows/SE333_CI.yml/badge.svg)
+
+
 ## Manual UI Testing
 I found that the manual UI Testing was confusing at first. I didn’t understand how Playwright recorded or how I would assert. After multiple failed attempts, I figured out how to assert for specific elements on the page. Once I had the entire script, I pasted it into one test method. Then, I had to manually add pauses to ensure that my test would fully pass. Once it did, I moved onto the CI github workflow file. I used the template provided from the PDF and pushed my files to github. However, github workflow failed because Playwright wasn’t being run headless. I made the modifications to my test file to make it headless and it passed the CI tests easily.
 
